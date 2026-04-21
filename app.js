@@ -1,6 +1,4 @@
-/* FILE: app.js
-  FINAL FIX: Robust Tab Switching + Order Logic
-*/
+
 
 function qs(sel) { return document.querySelector(sel); }
 
