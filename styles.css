@@ -1,15 +1,6 @@
-/*
-  FILE: styles.css
-  PURPOSE: All visual styling for the landing page.
 
-  How this file is organized:
-  - Theme tokens (CSS variables) first
-  - Global resets and base styles
-  - Major page sections in roughly the same order as index.html:
-    bubbles → nav → hero → services → order → toast → chat → responsive tweaks
-*/
 
-/* THEME TOKENS (single source of truth for colors) */
+/* THEME TOKENS */
 :root {
   --sky: #4FC3F7;
   --sky-dark: #0288D1;
@@ -24,13 +15,11 @@
   --bubble: rgba(79,195,247,0.13);
 }
 
-/* GLOBAL RESET (keeps layout consistent across browsers) */
+/* GLOBAL RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Enables smooth anchor scrolling (e.g., clicking nav links) */
 html { scroll-behavior: smooth; }
 
-/* BASE PAGE STYLES */
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--light);
@@ -38,22 +27,12 @@ body {
   overflow-x: hidden;
 }
 
-/* TAB PANELS (architecture)
-   All main "functions" live in panels; app.js shows one at a time. */
-.tab-panels {
-  position: relative;
-  z-index: 1;
-}
-.tab-panel {
-  display: none;
-}
-.tab-panel.is-active {
-  display: block;
-}
+/* TAB PANELS architecture */
+.tab-panels { position: relative; z-index: 1; }
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; }
 
-/* BUBBLES BACKGROUND
-   - The #bubbles container covers the full screen.
-   - Individual .bubble elements are created in app.js and animated via keyframes. */
+/* BUBBLES BACKGROUND */
 .bubbles-bg {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none; z-index: 0; overflow: hidden;
@@ -71,9 +50,7 @@ body {
   100% { transform: translateY(-15vh) scale(1.1); opacity: 0; }
 }
 
-/* NAV (sticky header)
-   - Desktop shows .nav-links + .nav-cta
-   - Mobile hides those and uses #hamburger + #mobile-menu (see media query at bottom) */
+/* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.92); backdrop-filter: blur(14px);
@@ -104,13 +81,12 @@ nav {
 .nav-cta:hover { background: var(--sky); transform: translateY(-1px); }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 .hamburger span { display: block; width: 25px; height: 2.5px; background: var(--deep); border-radius: 2px; transition: all 0.3s; }
+
 .mobile-menu { display: none; flex-direction: column; gap: 0; background: #fff; border-bottom: 1.5px solid rgba(79,195,247,0.2); }
 .mobile-menu a { padding: 14px 5%; border-top: 1px solid var(--foam); color: var(--deep); text-decoration: none; font-weight: 500; }
 .mobile-menu.open { display: flex; }
 
-/* HERO (headline section)
-   - Uses gradient background + decorative glow circle
-   - .hero-img is a subtle spinning emoji watermark */
+/* HERO */
 .hero {
   position: relative; z-index: 1;
   min-height: 92vh; display: flex; align-items: center;
@@ -142,6 +118,7 @@ nav {
 .hero h1 em { color: var(--sky-dark); font-style: normal; }
 .hero p { font-size: 1.07rem; color: #37474F; line-height: 1.7; max-width: 480px; margin-bottom: 32px; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
 .btn-primary {
   background: var(--sky-dark); color: #fff;
   padding: 14px 32px; border-radius: 35px;
@@ -157,6 +134,7 @@ nav {
   text-decoration: none; transition: all 0.2s;
 }
 .btn-outline:hover { background: var(--sky-dark); color: #fff; }
+
 .hero-img { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); font-size: 13rem; opacity: 0.18; pointer-events: none; user-select: none; animation: spinSlow 18s linear infinite; }
 @keyframes spinSlow { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
 .hero-stats { display: flex; gap: 36px; margin-top: 40px; flex-wrap: wrap; }
@@ -164,13 +142,13 @@ nav {
 .stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--sky-dark); }
 .stat span { font-size: 0.82rem; color: var(--gray); font-weight: 500; letter-spacing: 0.5px; }
 
-/* SECTION COMMONS (shared typography and spacing across sections) */
+/* SECTION COMMONS */
 section { position: relative; z-index: 1; padding: 80px 5%; }
 .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sky-dark); margin-bottom: 10px; }
 .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--deep); margin-bottom: 14px; }
 .section-sub { color: #546E7A; font-size: 1rem; max-width: 540px; line-height: 1.7; }
 
-/* SERVICES (grid of marketing cards) */
+/* SERVICES */
 .services { background: var(--white); }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; margin-top: 48px; }
 .service-card {
@@ -187,10 +165,12 @@ section { position: relative; z-index: 1; padding: 80px 5%; }
 .svc-price { font-weight: 700; color: var(--sky-dark); font-size: 1rem; }
 .svc-tag { display: inline-block; background: var(--foam); color: var(--sky-dark); font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; margin-top: 8px; }
 
-/* ORDER SECTION (form card + inputs) */
+/* ORDER SECTION (INTEGRATED UPDATES) */
 .order-section { background: linear-gradient(135deg, #E0F7FA, #E1F5FE); }
 .order-container { max-width: 760px; margin: 0 auto; }
 .order-form { background: #fff; border-radius: 24px; padding: 42px; box-shadow: 0 8px 40px rgba(2,136,209,0.1); margin-top: 40px; }
+
+/* Dynamic rows for Weight/Pieces and Dates */
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
 .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--deep); }
@@ -204,10 +184,59 @@ section { position: relative; z-index: 1; padding: 80px 5%; }
   border-color: var(--sky); box-shadow: 0 0 0 3px rgba(79,195,247,0.15);
 }
 .form-group textarea { resize: vertical; min-height: 90px; }
-.services-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* Updated Checklist */
+.services-checklist { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 12px;
+  background: var(--light);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ECEFF1;
+}
 .check-item { display: flex; align-items: center; gap: 9px; font-size: 0.9rem; cursor: pointer; }
 .check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--sky-dark); cursor: pointer; }
-.order-summary { background: var(--foam); border-radius: 14px; padding: 20px; margin-bottom: 22px; display: none; }
+
+/* NEW: Order Receipt Summary Box */
+.summary-box {
+  background: var(--foam);
+  border: 2px dashed var(--sky);
+  padding: 24px;
+  border-radius: 18px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: none; /* Controlled by JS */
+  animation: slideIn 0.4s cubic-bezier(.22,1,.36,1);
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.summary-box h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--sky-dark);
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+  padding-bottom: 8px;
+}
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  color: var(--deep);
+  margin-bottom: 6px;
+}
+.summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 2px solid rgba(2, 136, 209, 0.1);
+  font-weight: 900;
+  color: var(--sky-dark);
+  font-size: 1.1rem;
+}
+
 .submit-btn { width: 100%; background: var(--sky-dark); color: #fff; border: none; padding: 16px; border-radius: 35px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
 .submit-btn:hover { background: var(--sky); transform: translateY(-1px); }
 
@@ -222,7 +251,7 @@ section { position: relative; z-index: 1; padding: 80px 5%; }
 .price-table tr:hover { background: rgba(79,195,247,0.12); }
 .price-badge { background: var(--accent); color: var(--deep); font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 10px; margin-left: 7px; }
 
-/* PROCESS ("How it works") */
+/* PROCESS */
 .process { background: var(--white); }
 .process-steps { display: flex; gap: 0; margin-top: 48px; position: relative; flex-wrap: wrap; }
 .process-steps::before { content: ''; position: absolute; top: 38px; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--sky), var(--sky-dark)); z-index: 0; }
@@ -246,9 +275,7 @@ section { position: relative; z-index: 1; padding: 80px 5%; }
 .map-embed { border-radius: 18px; overflow: hidden; height: 300px; border: 2px solid rgba(79,195,247,0.2); }
 .map-embed iframe { width: 100%; height: 100%; border: none; }
 
-/* TOAST (small popup message)
-   - Hidden by default (opacity: 0)
-   - app.js toggles the .show class to animate it in/out */
+/* TOAST */
 #toast {
   position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(30px);
   background: var(--deep); color: #fff; padding: 13px 28px; border-radius: 40px;
@@ -257,9 +284,7 @@ section { position: relative; z-index: 1; padding: 80px 5%; }
 }
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* AI CHAT (floating widget)
-   - #chat-toggle is the round button
-   - #chat-window is the panel; .open makes it visible */
+/* AI CHAT */
 #chat-toggle {
   position: fixed; bottom: 28px; right: 28px; z-index: 1000;
   width: 60px; height: 60px; border-radius: 50%;
@@ -282,30 +307,22 @@ section { position: relative; z-index: 1; padding: 80px 5%; }
 .chat-title { font-weight: 700; font-size: 0.97rem; }
 .chat-sub { font-size: 0.78rem; opacity: 0.8; }
 .chat-close { margin-left: auto; background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: 0.8; }
-.chat-close:hover { opacity: 1; }
 .chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-.msg { max-width: 85%; padding: 11px 14px; border-radius: 16px; font-size: 0.88rem; line-height: 1.55; animation: msgIn 0.22s ease; }
-@keyframes msgIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.msg { max-width: 85%; padding: 11px 14px; border-radius: 16px; font-size: 0.88rem; line-height: 1.55; }
 .msg.bot { background: var(--foam); color: var(--deep); border-bottom-left-radius: 4px; align-self: flex-start; }
 .msg.user { background: var(--sky-dark); color: #fff; border-bottom-right-radius: 4px; align-self: flex-end; }
-.msg.bot a { color: var(--sky-dark); font-weight: 700; text-decoration: none; }
-.msg.bot a:hover { text-decoration: underline; }
 .chat-input-row { padding: 12px 14px; border-top: 1px solid var(--foam); display: flex; gap: 8px; }
-.chat-input { flex: 1; padding: 10px 14px; border: 1.5px solid #ECEFF1; border-radius: 25px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border 0.2s; }
-.chat-input:focus { border-color: var(--sky); }
-.chat-send { width: 40px; height: 40px; background: var(--sky-dark); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: background 0.2s; flex-shrink: 0; }
-.chat-send:hover { background: var(--sky); }
+.chat-input { flex: 1; padding: 10px 14px; border: 1.5px solid #ECEFF1; border-radius: 25px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; }
+.chat-send { width: 40px; height: 40px; background: var(--sky-dark); color: #fff; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-/* RESPONSIVE RULES
-   - Shrinks layout for phones/tablets
-   - Switches the nav into hamburger mode */
+/* RESPONSIVE RULES */
 @media(max-width:768px){
   .form-row { grid-template-columns: 1fr; }
+  .services-checklist { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .process-steps::before { display: none; }
   #chat-window { width: calc(100vw - 40px); right: 20px; }
   .hero-img { display: none; }
-  .services-checklist { grid-template-columns: 1fr; }
 }
