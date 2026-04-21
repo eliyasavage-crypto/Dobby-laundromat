@@ -1,36 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    FILE: index.html
-    PURPOSE: Page structure + content only.
-    - All styling is in styles.css
-    - All interactivity (menu, bubbles, chat, toast, form submit) is in app.js
-  -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dobby Laundromat – Makerere Kikoni</title>
-  <!-- Brand fonts used across headings and body text -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Main stylesheet for the whole page -->
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <!--
-    BACKGROUND LAYER (visual only)
-    app.js dynamically injects floating "bubble" elements into this container.
-  -->
   <div class="bubbles-bg" id="bubbles"></div>
 
-  <!--
-    TOP NAVIGATION
-    - Desktop: shows link list + "Book Now" button
-    - Mobile: shows hamburger that toggles #mobile-menu (handled in app.js)
-  -->
   <nav>
     <a href="#" class="nav-logo"><span>🧺</span> Dobby</a>
     <ul class="nav-links">
-      <!-- Tabs: app.js switches which panel is visible -->
       <li><a href="#services" data-tab-link="services">Services</a></li>
       <li><a href="#order" data-tab-link="order">Order</a></li>
       <li><a href="#pricing" data-tab-link="pricing">Pricing</a></li>
@@ -42,7 +24,7 @@
       <span></span><span></span><span></span>
     </div>
   </nav>
-  <!-- MOBILE NAV MENU (hidden by default; opened by toggling the .open class) -->
+
   <div class="mobile-menu" id="mobile-menu">
     <a href="#services" data-tab-link="services">Services</a>
     <a href="#order" data-tab-link="order">Order</a>
@@ -51,15 +33,11 @@
     <a href="#contact" data-tab-link="contact">Contact</a>
   </div>
 
-  <!--
-    HERO SECTION (first impression)
-    Contains: location badge, headline, short pitch, CTAs, and quick stats.
-  -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">📍 Makerere Kikoni, Opposite Olympia Hostel</div>
       <h1>Fresh Laundry,<br><em>Delivered</em> to You</h1>
-      <p>Dobby Laundromat takes the hassle out of laundry. Professional washing, ironing &amp; dry cleaning — done right, on time, every time.</p>
+      <p>Dobby Laundromat takes the hassle out of laundry. Professional washing, ironing & dry cleaning — done right, on time, every time.</p>
       <div class="hero-btns">
         <a href="#order" class="btn-primary">Book a Pickup 🛒</a>
         <a href="https://wa.me/256708748558" target="_blank" rel="noreferrer" class="btn-outline">WhatsApp Us 💬</a>
@@ -73,234 +51,159 @@
     <div class="hero-img">🌀</div>
   </section>
 
-  <!--
-    TAB PANELS WRAPPER
-    Only one panel is visible at a time (controlled by app.js).
-  -->
   <main class="tab-panels" id="tab-panels">
-  <!--
-    SERVICES
-    Each .service-card is a tappable marketing card showing a service + starting price.
-  -->
-  <section class="services tab-panel" id="services" data-tab-panel="services">
-    <div class="section-label">What We Offer</div>
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-sub">Professional laundry care for every type of garment, handled with love and expertise.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="svc-icon">🧼</span>
-        <div class="svc-name">Wash &amp; Fold</div>
-        <div class="svc-desc">Everyday laundry done fast, clean, and fresh.</div>
-        <div class="svc-price">From UGX 3,000</div>
-        <div class="svc-tag">Same-day options</div>
+    <section class="services tab-panel is-active" id="services" data-tab-panel="services">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="svc-icon">🧼</span>
+          <div class="svc-name">Wash & Fold</div>
+          <div class="svc-desc">Everyday laundry done fast and clean.</div>
+          <div class="svc-price">From UGX 3,000</div>
+          <div class="svc-tag">Same-day options</div>
+        </div>
+        <div class="service-card">
+          <span class="svc-icon">🧺</span>
+          <div class="svc-name">Ironing</div>
+          <div class="svc-desc">Crisp, neat finishing for uniforms.</div>
+          <div class="svc-price">From UGX 1,000</div>
+          <div class="svc-tag">Sharp look</div>
+        </div>
+        <div class="service-card">
+          <span class="svc-icon">🧥</span>
+          <div class="svc-name">Dry Cleaning</div>
+          <div class="svc-desc">Gentle care for suits and coats.</div>
+          <div class="svc-price">From UGX 8,000</div>
+          <div class="svc-tag">Premium care</div>
+        </div>
+        <div class="service-card">
+          <span class="svc-icon">🚚</span>
+          <div class="svc-name">Pickup & Delivery</div>
+          <div class="svc-desc">We collect around Kikoni.</div>
+          <div class="svc-price">From UGX 2,000</div>
+          <div class="svc-tag">Convenient</div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="svc-icon">🧺</span>
-        <div class="svc-name">Ironing</div>
-        <div class="svc-desc">Crisp, neat finishing for shirts, trousers, and uniforms.</div>
-        <div class="svc-price">From UGX 1,000</div>
-        <div class="svc-tag">Sharp look</div>
-      </div>
-      <div class="service-card">
-        <span class="svc-icon">🧥</span>
-        <div class="svc-name">Dry Cleaning</div>
-        <div class="svc-desc">Gentle care for suits, coats, and delicate fabrics.</div>
-        <div class="svc-price">From UGX 8,000</div>
-        <div class="svc-tag">Premium care</div>
-      </div>
-      <div class="service-card">
-        <span class="svc-icon">🚚</span>
-        <div class="svc-name">Pickup &amp; Delivery</div>
-        <div class="svc-desc">We collect and return your laundry around Kikoni.</div>
-        <div class="svc-price">From UGX 2,000</div>
-        <div class="svc-tag">Convenient</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!--
-    ORDER SECTION (demo form)
-    - The form submission is handled in app.js (currently just shows a toast).
-    - Later, you can replace the submit handler with a WhatsApp link or backend API call.
-  -->
-  <section class="order-section tab-panel" id="order" data-tab-panel="order">
-    <div class="order-container">
-      <div class="section-label">Book a Pickup</div>
-      <h2 class="section-title">Place an Order</h2>
-      <p class="section-sub">Tell us what you need, and we’ll pick it up and deliver it back fresh.</p>
-
-      <div class="order-form">
-        <div class="order-summary" id="order-summary"></div>
-        <form id="order-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" required />
+    <section class="order-section tab-panel" id="order" data-tab-panel="order">
+      <div class="order-container">
+        <div class="section-label">Book a Pickup</div>
+        <h2 class="section-title">Place an Order</h2>
+        <div class="order-form">
+          <form id="order-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cust-name">Name</label>
+                <input id="cust-name" required placeholder="Your name" />
+              </div>
+              <div class="form-group">
+                <label for="cust-phone">Phone</label>
+                <input id="cust-phone" required placeholder="+256..." />
+              </div>
             </div>
             <div class="form-group">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" placeholder="+256..." required />
+              <label for="cust-address">Pickup Address</label>
+              <input id="cust-address" placeholder="Hostel / Room / House No." />
             </div>
-          </div>
-          <div class="form-group">
-            <label>Services</label>
-            <div class="services-checklist">
-              <label class="check-item"><input type="checkbox" name="services" value="Wash & Fold" /> Wash &amp; Fold</label>
-              <label class="check-item"><input type="checkbox" name="services" value="Ironing" /> Ironing</label>
-              <label class="check-item"><input type="checkbox" name="services" value="Dry Cleaning" /> Dry Cleaning</label>
-              <label class="check-item"><input type="checkbox" name="services" value="Pickup & Delivery" /> Pickup &amp; Delivery</label>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pickup-date">Pickup Date</label>
+                <input type="date" id="pickup-date" required />
+              </div>
+              <div class="form-group">
+                <label for="pickup-time">Preferred Time</label>
+                <input type="time" id="pickup-time" required />
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" placeholder="Any special instructions..."></textarea>
-          </div>
-          <button class="submit-btn" type="submit">Submit Order</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing tab-panel" id="pricing" data-tab-panel="pricing">
-    <div class="section-label">Transparent Prices</div>
-    <h2 class="section-title">Pricing</h2>
-    <p class="section-sub">Clear starting prices. Final cost depends on item type, quantity, and fabric.</p>
-
-    <table class="price-table" aria-label="Pricing table">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Starting price</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Wash &amp; Fold <span class="price-badge">popular</span></td>
-          <td>UGX 3,000</td>
-          <td>Per kg (typical)</td>
-        </tr>
-        <tr>
-          <td>Ironing</td>
-          <td>UGX 1,000</td>
-          <td>Per item</td>
-        </tr>
-        <tr>
-          <td>Dry Cleaning</td>
-          <td>UGX 8,000</td>
-          <td>Delicates / suits / coats</td>
-        </tr>
-        <tr>
-          <td>Pickup &amp; Delivery</td>
-          <td>UGX 2,000</td>
-          <td>Within Kikoni (distance may vary)</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="process tab-panel" id="how-it-works" data-tab-panel="how-it-works">
-    <div class="section-label">Simple Process</div>
-    <h2 class="section-title">How It Works</h2>
-    <p class="section-sub">From pickup to delivery in a few easy steps.</p>
-
-    <div class="process-steps" aria-label="Process steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Book</h4>
-        <p>Place an order using the Order tab or WhatsApp.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Pickup</h4>
-        <p>We collect your laundry from your location around Kikoni.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Clean</h4>
-        <p>Wash, dry, and iron with care depending on fabric and instructions.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h4>Deliver</h4>
-        <p>Fresh laundry delivered back—typically within 24 hours.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact tab-panel" id="contact" data-tab-panel="contact">
-    <div class="section-label">Reach Us</div>
-    <h2 class="section-title">Contact</h2>
-    <p class="section-sub">We’re located in Kikoni, opposite Olympia Hostel. Call or WhatsApp for quick help.</p>
-
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="c-icon">📍</div>
-          <div>
-            <div class="c-label">Location</div>
-            <div class="c-value">Makerere Kikoni (Opp. Olympia Hostel)</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">📞</div>
-          <div>
-            <div class="c-label">Phone</div>
-            <div class="c-value"><a href="tel:+256708748558">+256 708 748 558</a></div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="c-icon">💬</div>
-          <div>
-            <div class="c-label">WhatsApp</div>
-            <div class="c-value"><a href="https://wa.me/256708748558" target="_blank" rel="noreferrer">Chat with us</a></div>
-          </div>
+            <div class="form-group">
+              <label>Services Required</label>
+              <div class="services-checklist" id="services-check">
+                <label class="check-item"><input type="checkbox" value="Wash & Fold" data-price="3000"> Wash & Fold</label>
+                <label class="check-item"><input type="checkbox" value="Ironing" data-price="1000"> Ironing</label>
+                <label class="check-item"><input type="checkbox" value="Dry Cleaning" data-price="8000"> Dry Cleaning</label>
+                <label class="check-item"><input type="checkbox" value="Pickup & Delivery" data-price="2000"> Pickup & Delivery</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="est-weight">Est. Weight (kg)</label>
+                <input type="number" id="est-weight" placeholder="1" min="1" step="0.5" />
+              </div>
+              <div class="form-group">
+                <label for="est-pieces">Est. Pieces</label>
+                <input type="number" id="est-pieces" placeholder="1" min="1" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="instructions">Notes</label>
+              <textarea id="instructions" placeholder="Any special instructions..."></textarea>
+            </div>
+            <div id="order-summary" class="summary-box">
+              <h4>Order Summary</h4>
+              <div id="summary-items"></div>
+              <div class="summary-total-row">
+                <span>Total Estimate:</span>
+                <span id="summary-total">UGX 0</span>
+              </div>
+            </div>
+            <button class="submit-btn" type="submit">Submit Order via WhatsApp</button>
+          </form>
         </div>
       </div>
+    </section>
 
-      <div class="map-embed" aria-label="Map">
-        <iframe
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Makerere%20Kikoni%20Olympia%20Hostel&output=embed"
-          title="Dobby location map"
-        ></iframe>
+    <section class="pricing tab-panel" id="pricing" data-tab-panel="pricing">
+      <div class="section-label">Transparent Prices</div>
+      <h2 class="section-title">Pricing</h2>
+      <table class="price-table">
+        <thead>
+          <tr><th>Service</th><th>Price</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Wash & Fold</td><td>UGX 3,000</td><td>Per kg</td></tr>
+          <tr><td>Ironing</td><td>UGX 1,000</td><td>Per item</td></tr>
+          <tr><td>Dry Cleaning</td><td>UGX 8,000</td><td>Per item</td></tr>
+          <tr><td>Pickup & Delivery</td><td>UGX 2,000</td><td>Within Kikoni</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="process tab-panel" id="how-it-works" data-tab-panel="how-it-works">
+      <div class="section-label">Simple Process</div>
+      <h2 class="section-title">How It Works</h2>
+      <div class="process-steps">
+        <div class="step"><div class="step-num">1</div><h4>Book</h4><p>Order online or WhatsApp.</p></div>
+        <div class="step"><div class="step-num">2</div><h4>Pickup</h4><p>We collect from Kikoni.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>Clean</h4><p>Handled with care.</p></div>
+        <div class="step"><div class="step-num">4</div><h4>Deliver</h4><p>Fresh in 24 hours.</p></div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="contact tab-panel" id="contact" data-tab-panel="contact">
+      <div class="section-label">Reach Us</div>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item"><div class="c-icon">📍</div><div><div class="c-label">Location</div><div class="c-value">Kikoni (Opp. Olympia)</div></div></div>
+          <div class="contact-item"><div class="c-icon">📞</div><div><div class="c-label">Phone</div><div class="c-value"><a href="tel:+256708748558">+256 708 748 558</a></div></div></div>
+        </div>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7547!2d32.5594!3d0.3344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMjAnMDMuOCJOIDMywrAzMyczMy44IkU!5e0!3m2!1sen!2sug!4v1620000000000!5m2!1sen!2sug" title="map"></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!--
-    FLOATING CHAT WIDGET (demo)
-    - Toggle button opens/closes the chat window
-    - Messages are appended to #chat-messages in app.js
-  -->
-  <button id="chat-toggle" aria-label="Open chat">💬</button>
-  <div id="chat-window" aria-live="polite" aria-label="Chat window">
-    <div class="chat-header">
-      <div class="chat-avatar">🧺</div>
-      <div>
-        <div class="chat-title">Dobby Assistant</div>
-        <div class="chat-sub">Ask about services &amp; pricing</div>
-      </div>
-      <button class="chat-close" id="chat-close" aria-label="Close chat">✕</button>
-    </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="msg bot">Hi! What can I help you with today?</div>
-    </div>
-    <div class="chat-input-row">
-      <input class="chat-input" id="chat-input" placeholder="Type a message..." />
-      <button class="chat-send" id="chat-send" aria-label="Send">➤</button>
-    </div>
+  <button id="chat-toggle">💬</button>
+  <div id="chat-window">
+    <div class="chat-header"><div class="chat-avatar">🧺</div><div><div class="chat-title">Dobby Assistant</div></div><button class="chat-close" id="chat-close">✕</button></div>
+    <div class="chat-messages" id="chat-messages"><div class="msg bot">Hi! Need help with laundry?</div></div>
+    <div class="chat-input-row"><input class="chat-input" id="chat-input" placeholder="Type..." /><button class="chat-send" id="chat-send">➤</button></div>
   </div>
 
-  <!-- TOAST (temporary notification), shown/hidden by app.js -->
-  <div id="toast" role="status" aria-live="polite"></div>
-
-  <!-- Main JavaScript for interactivity (loaded after HTML is parsed) -->
+  <div id="toast" role="status"></div>
   <script src="./app.js" defer></script>
 </body>
 </html>
